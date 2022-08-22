@@ -21,9 +21,9 @@ namespace SchoolPractice
             Gpa = gpa;
         }
 
-        public Student(string name, int studentId) : this(name, studentId, 0, 0) { }
+        public Student(string name, int studentId): this(name, studentId, 0, 0.0) {}
 
-        public Student(string name) : this(name, nextStudentId)
+        public Student(string name): this(name, nextStudentId)
         {
             nextStudentId++;
         }
