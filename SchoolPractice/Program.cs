@@ -8,7 +8,7 @@ namespace SchoolPractice
         {
             // TODO: Instantiate your objects and test your exercise solutions with print statements here.
 
-            Student jordan = new Student("Jordan", 1234, 1, 4.0);
+            Student jordan = new Student("Jordan", 1234, 15, 4.0);
 
             Student josh = new Student("Josh");
 
@@ -22,6 +22,19 @@ namespace SchoolPractice
 
             Console.WriteLine($"The Student class works! {aaron.Name} is a new student!");
             Console.WriteLine($"{aaron.Name} {aaron.StudentId} {aaron.NumberOfCredits} {aaron.Gpa}");
+
+
+            Console.WriteLine($"{jordan.Name} is a {jordan.GetGradeLevel(15)}");
+
+            Console.WriteLine(jordan.ToString());
+
+
+            Teacher lisa = new Teacher("Lisa", "Smith", "algebra", 32);
+
+
+            Course alegbra = new Course("algebra", lisa);
+
+            Console.WriteLine(alegbra.ToString());
 
 
         }

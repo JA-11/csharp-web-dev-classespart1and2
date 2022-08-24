@@ -9,8 +9,7 @@ namespace SchoolPractice
         public int NumberOfCredits { get; set; }
         public double Gpa { get; set; }
 
-        public Student(string name, int studentId,
-            int numberOfCredits, double gpa)
+        public Student(string name, int studentId, int numberOfCredits, double gpa)
         {
             Name = name;
             StudentId = studentId;
@@ -31,20 +30,76 @@ namespace SchoolPractice
         public void AddGrade(int courseCredits, double grade)
         {
             // Update the appropriate properties: NumberOfCredits, Gpa
+            // gpa = (total quality score) / (total number of credits)
+           
+            double totalQualityScore = Gpa * NumberOfCredits;
+            totalQualityScore += courseCredits * grade;
+            NumberOfCredits += courseCredits;
+            Gpa = totalQualityScore / NumberOfCredits;
+
+            Console.WriteLine(Gpa);
+
         }
 
         //TODO: Complete the GetGradeLevel method here:
         public string GetGradeLevel(int credits)
         {
             // Determine the grade level of the student based on NumberOfCredits
-            return "grade level tbd";
+            if (credits <= 29)
+            {
+                return "Freshman";
+            }
+            else if (credits <= 59)
+            {
+                return "Sophomore";
+            }
+            else if (credits <= 89)
+            {
+                return "Junior";
+            }
+            else 
+            {
+                return "Senior";
+            } 
         }
 
         // TODO: Add your custom 'ToString' method here. Make sure it returns a well-formatted string rather
         //  than just the class fields.
 
+        public override string ToString()
+        {
+            return $"{Name} (Credits: {NumberOfCredits}, GPA: {Gpa})";
+        }
+
+        /*public override bool Equals(object obj)
+        {
+            return obj is Student student &&
+                   StudentId == student.StudentId;
+        }*/
+
         // TODO: Add your custom 'Equals' method here. Consider which fields should match in order to call two
         //  Student objects equal.
+
+        public override bool Equals(object obj)
+        {
+            if (obj == this)
+            {
+                return true;
+            }
+
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            Student studentObj = obj as Student;
+            return StudentId == studentObj.StudentId;
+        }
 
     }
 }
